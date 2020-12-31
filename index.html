@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BAND WEBSITE</title>
     <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/responsive.css">
     <link rel="stylesheet" href="./assets/font/themify-icons/themify-icons.css">
 </head>
 
@@ -53,6 +54,10 @@
             <!-- Begin: Search Button -->
             <div class="search-btn">
                 <i class="search-icon ti-search"></i>
+            </div>
+
+            <div id="mobile-menu" class="mobile-menu-btn">
+                <i class="menu-icon ti-menu"></i>
             </div>
             <!-- End: Search Button -->
         </div>
@@ -222,6 +227,30 @@
         <!-- End Footer -->
     </div>
     <!-- End Main -->
+
+    <script>
+        var header = document.getElementById('header');
+        var mobileMenu = document.getElementById('mobile-menu');
+        var currentHeight = header.clientHeight;
+        //Open/Close Mobile Menu
+        mobileMenu.onclick = function() {
+            var isClosed = header.clientHeight === currentHeight;
+            if (isClosed) {
+                header.style.height = 'auto';
+            } else {
+                header.style.height = '46px';
+            }
+        };
+        // Auto close when click on menu item
+        var menuItems = document.querySelectorAll('#nav li a[href*="#"]')
+        console.log(menuItems);
+        for (var i = 0; i < menuItems.length; i++) {
+            var menuItem = menuItems[i];
+            menuItem.onclick = function() {
+                header.style.height = '46px';
+            }
+        }
+    </script>
 </body>
 
 </html>
