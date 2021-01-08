@@ -92,15 +92,15 @@
 
                 <!-- Begin Teams -->
                 <div class="row member-list">
-                    <div class="col col-third text-center">
+                    <div class="col col-third s-col-full mt-32 text-center">
                         <p class="member-name">Name</p>
                         <img src="./assets/img/band/member01.jpg" alt="Name" class="member-img">
                     </div>
-                    <div class="col col-third text-center">
+                    <div class="col col-third s-col-full mt-32 text-center">
                         <p class="member-name">Name</p>
                         <img src="./assets/img/band/member01.jpg" alt="Name" class="member-img">
                     </div>
-                    <div class="col col-third text-center">
+                    <div class="col col-third s-col-full mt-32 text-center">
                         <p class="member-name">Name</p>
                         <img src="./assets/img/band/member01.jpg" alt="Name" class="member-img">
                     </div>
@@ -126,33 +126,33 @@
 
                     <!-- Begin Places -->
                     <div class="row places-list">
-                        <div class="col col-third">
+                        <div class="col col-third s-col-full mt-16">
                             <img src="./assets/img/places/place01.jpg" alt="New York" class="place-img">
                             <div class="place-body">
                                 <h3 class="place-heading">New York</h3>
                                 <p class="place-time">Fri 27 Nov 2016</p>
                                 <p class="place-desc">Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
-                                <a href="#" class="btn">Buy tickets</a>
+                                <a href="#" class="btn s-full-width ">Buy tickets</a>
                             </div>
                         </div>
 
-                        <div class="col col-third">
+                        <div class="col col-third s-col-full mt-16">
                             <img src="./assets/img/places/place02.jpg" alt="New York" class="place-img">
                             <div class="place-body">
                                 <h3 class="place-heading">Paris</h3>
                                 <p class="place-time">Sat 28 Nov 2016</p>
                                 <p class="place-desc">Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
-                                <a href="#" class="btn">Buy tickets</a>
+                                <a href="#" class="btn s-full-width ">Buy tickets</a>
                             </div>
                         </div>
 
-                        <div class="col col-third">
+                        <div class="col col-third s-col-full mt-16">
                             <img src="./assets/img/places/place03.jpg" alt="New York" class="place-img">
                             <div class="place-body">
                                 <h3 class="place-heading">San Francisco</h3>
                                 <p class="place-time">Sun 29 Nov 2016</p>
                                 <p class="place-desc">Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
-                                <a href="#" class="btn">Buy tickets</a>
+                                <a href="#" class="btn s-full-width ">Buy tickets</a>
                             </div>
                         </div>
                         <!-- <div class="clear"></div> -->
@@ -170,21 +170,21 @@
 
                 <div class="row contact-content">
                     <!-- Begin Contact-Info -->
-                    <div class="col col-half contact-info">
+                    <div class="col col-half s-col-full contact-info">
                         <p><i class="ti-location-pin"></i> Chicago, US</p>
-                        <p><i class="ti-mobile"></i> Phone: +00 151515</p>
-                        <p><i class="ti-email"></i> Email: mail@mail.com</p>
+                        <p><i class="ti-mobile"></i> Phone: <a href="tel:+00 151515">+00 151515</a></p>
+                        <p><i class="ti-email"></i> Email: <a href="mailto:mail@mail.com">mail@mail.com</a></p>
                     </div>
                     <!-- End Contact-Info -->
                     <!-- Begin Sending Email -->
-                    <div class="col col-half contact-form">
+                    <div class="col col-half s-col-full contact-form ">
                         <form action="">
                             <!-- Name and Email -->
                             <div class="row">
-                                <div class="col col-half">
+                                <div class="col col-half s-col-full">
                                     <input type="text" name="" id="" placeholder="Name" required class="form-control">
                                 </div>
-                                <div class="col col-half">
+                                <div class="col col-half s-col-full s-mt-8">
                                     <input type="email" name="" id="" placeholder="Email" required class="form-control">
                                 </div>
                                 <!-- <div class="clear"></div> -->
@@ -196,7 +196,7 @@
                                 </div>
                                 <!-- <div class="clear"></div> -->
                             </div>
-                            <input class="btn mt-16 pull-right" type="submit" value="Send">
+                            <input class="contact-submit-btn btn mt-16 pull-right s-full-width" type="submit" value="Send">
                         </form>
 
                     </div>
@@ -243,11 +243,16 @@
         };
         // Auto close when click on menu item
         var menuItems = document.querySelectorAll('#nav li a[href*="#"]')
-        console.log(menuItems);
         for (var i = 0; i < menuItems.length; i++) {
             var menuItem = menuItems[i];
-            menuItem.onclick = function() {
-                header.style.height = '46px';
+            menuItem.onclick = function(event) {
+                var isParentMenu = this.nextElementSibling &&
+                    this.nextElementSibling.classList.contains('subnav');
+                if (!isParentMenu) {
+                    header.style.height = null;
+                } else {
+                    event.preventDefault();
+                }
             }
         }
     </script>
